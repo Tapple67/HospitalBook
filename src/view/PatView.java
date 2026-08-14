@@ -21,7 +21,7 @@ public class PatView {
         while( true ){
             try{  
                 System.out.println("[환자정보메뉴]");
-                System.out.println("1. 환자 등록 2. 환자 정보 조회 3. 환자정보 수정 4. 환자 삭제");
+                System.out.println("1. 환자 등록 2. 환자 정보 조회 3. 환자정보 수정 4. 환자 삭제 5.처음으로");
                 System.out.print("번호 입력: ");
 
                 int ch = scan.nextInt();
