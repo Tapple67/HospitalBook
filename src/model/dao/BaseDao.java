@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 
 public class BaseDao {
     //1. 연동 정보
-    private String url = "jdbc:mysql://127.0.0.1:3306/mydb0813";
+    private String url = "jdbc:mysql://127.0.0.1:3306/ourdb0814";
     private String user = "root";
-    private String password = "1324";
+    private String password = "1234";
 
     //2.연동인터페이스
     protected Connection conn;
