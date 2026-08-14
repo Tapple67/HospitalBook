@@ -12,6 +12,8 @@ public class PatDao extends PersonDao {
     private static final PatDao instance = new PatDao();
     public static PatDao getInstance(){ return instance; }
 
+    ArrayList<Object> list = new ArrayList<>();
+    
     public boolean save( PatDto patDto ){
         try{             
             String sql = "insert into patient(pname, pphone) values( ? , ? )";

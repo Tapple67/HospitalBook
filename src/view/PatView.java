@@ -29,6 +29,9 @@ public class PatView {
                 else if( ch == 2 ){ findAll(); }
                 else if( ch == 3 ){ update(); }
                 else if( ch == 4 ){ delete(); }
+                else if(ch==5){
+                    return; // app.java로
+                }
             }catch( InputMismatchException e ){
                 
                 scan = new Scanner( System.in );
@@ -63,7 +66,10 @@ public class PatView {
         System.out.println("[환자정보 수정]");
         System.out.print("환자 번호: "); int pno = scan.nextInt();
         System.out.print("수정할 전화번호: "); String pphone = scan.next();
-        PatDto patDto = new PatDto(pno, pphone, pphone);
+        PatDto patDto = new PatDto();
+
+        patDto.setPno(pno);
+        patDto.setPhone(pphone);
         boolean result = bc.update(patDto);
         if(result) {System.out.println("(안내) 수정완료!");}
         else {System.out.println("(안내) 수정실패!");}
