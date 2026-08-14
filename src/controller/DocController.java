@@ -14,13 +14,17 @@ public class DocController {
 
     private DocDao dd = DocDao.getInstance();
 
-    public boolean save(DocDto patDto) {
-        boolean result = dd.save(patDto);
+    public boolean save(DocDto docDto) {
+        boolean result = dd.save(docDto);
         return result;
     }
 
     public ArrayList<DocDto> findAll( ){
-        ArrayList<DocDto> result = dd.findAll();
+        ArrayList<DocDto> result = new ArrayList<>();
+        for(Object obj:dd.findAll())
+            if(obj instanceof DocDto){
+                result.add((DocDto)obj);
+            }
         return result;
     }
 
