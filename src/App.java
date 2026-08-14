@@ -1,4 +1,4 @@
-package hospitalbook;
+
 import java.util.Scanner;
 import view.BookView;
 import view.DocView;

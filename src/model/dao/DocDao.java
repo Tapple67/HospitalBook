@@ -20,13 +20,25 @@ public class DocDao extends PersonDao{
     public boolean save(Object Dto){
 
         try {
-            String sql = "select into doctor values(? : ?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            int result = ps.executeUpdate();
+            DocDto docDto = (DocDto)Dto;
             
-        } catch (Exception e) {
+            String sql = "select into doctor values(?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, docDto.getName());
+            ps.setString(2, docDto.getPhone());
+            ps.setString(3, docDto.getPart());
+
+            int result = ps.executeUpdate();
+            if( result == 1){
+                return true;
+            } //성공 반환
+            
+        } catch (SQLException e) {
+            System.out.println(e);
             
         }
+        return false;
+
     };
 
     public ArrayList<Object> findAll(){
@@ -51,10 +63,37 @@ public class DocDao extends PersonDao{
 
     public boolean update(Object Dto){
 
+        
+        try {
+            DocDto docDto = (DocDto)Dto;
+
+            String url = "update doctor set dno = ? where dphone = ?";
+            PreparedStatement ps = conn.prepareStatement(url);
+            ps.setInt(1, docDto.getNo());
+            ps.setString(2, docDto.getPhone());
+
+            int result = ps.executeUpdate();
+            if(result == 1){ return true;}
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
     };
 
-    public boolean delete(){
-
+    public boolean delete(int no){
+        try {
+            String url = "delete from doctor where dno = ?";
+            PreparedStatement ps = conn.prepareStatement(url);
+            ps.setInt(1, no);
+            int result = ps.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
     };
         
 }

@@ -8,7 +8,14 @@ import controller.DocController;
 import model.dto.DocDto;
 
 public class DocView {
+    private DocView(){}
+    private static final DocView instance = new DocView();
+
     
+    public static DocView getInstance() {
+        return instance;
+    }
+
     Scanner scan = new Scanner(System.in);
     
     private DocController dc = DocController.getInstance();
@@ -22,10 +29,15 @@ public class DocView {
 
             int ch = scan.nextInt();
 
-            if(ch == 1){save();}
-                else if(ch==2){delete();}
-                else if(ch==3){update();}
-                else if(ch==4){findAll();}
+            if(ch == 1){
+                save();
+            }else if(ch==2){
+                delete();
+            }else if(ch==3){
+                update();
+            }else if(ch==4){
+                findAll();
+            }
 
         } catch (InputMismatchException e) {
             scan = new Scanner(System.in); // 입력 했지만 타입에서 예외 이므로 입력 객체 초기화
@@ -53,7 +65,8 @@ public class DocView {
 
     public void findAll(){
         ArrayList<DocDto> result = dc.findAll();
-        for (DocDto dto:result){
+
+        for (DocDto dto: result){
             System.out.println( dto.getNo()+" / "+dto.getName()+" / " +dto.getPart() );
         }
     }
