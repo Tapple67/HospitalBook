@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 
 import model.dao.PatDao;
+import model.dto.DocDto;
 import model.dto.PatDto;
 
 public class PatController {
@@ -18,7 +19,11 @@ public class PatController {
     }
 
     public ArrayList<PatDto> findAll( ){
-        ArrayList<PatDto> result = bd.findAll();
+        ArrayList<PatDto> result = new ArrayList<>();
+        for(Object obj:bd.findAll())
+            if(obj instanceof PatDto){
+                result.add((PatDto)obj);
+            }
         return result;
     }
 
