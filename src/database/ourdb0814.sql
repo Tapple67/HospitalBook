@@ -16,13 +16,13 @@ CREATE TABLE doctor(
     constraint PRIMARY KEY( dno ) 
 );
 
-CREATE TABLE reservation (
-    rno INT AUTO_INCREMENT,
-    rdate DATE NOT NULL,
+CREATE TABLE book (
+    bno INT AUTO_INCREMENT,
+    bdate DATE NOT NULL,
     dno INT,                   
     pno INT, 
     
-    CONSTRAINT PRIMARY KEY(rno),
+    CONSTRAINT PRIMARY KEY(bno),
         CONSTRAINT FOREIGN KEY(dno) REFERENCES doctor(dno) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FOREIGN KEY(pno) REFERENCES patient(pno) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -51,7 +51,7 @@ INSERT INTO doctor(dname, dphone, dpart) VALUES
 ('오세진', '010-7890-1234', '이비인후과'),
 ('임유진', '010-8901-2345', '산부인과');
 
-INSERT INTO reservation(rdate, dno, pno) VALUES
+INSERT INTO book(bdate, dno, pno) VALUES
 ('2026-01-14', 1, 1),
 ('2025-01-14', 1, 2),
 ('2026-08-14', 3, 2),

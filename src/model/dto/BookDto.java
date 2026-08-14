@@ -1,4 +1,4 @@
-package hospitalbook.src.model.dto;
+package model.dto;
 
 public class BookDto {
     // 1. 데이터베이스 표에서 (CRUD) 사용할 자료들을 private 멤버변수로 구성
