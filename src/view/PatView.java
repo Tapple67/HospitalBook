@@ -54,7 +54,7 @@ public class PatView {
         System.out.println("[환자 정보 조회]");
         ArrayList<PatDto> result = bc.findAll();
         for( PatDto dto : result ){
-            System.out.println( dto.getPno()+" / "+dto.getPname()+" / " +dto.getPphone() );
+            System.out.println( dto.getPno()+" / "+dto.getName()+" / " +dto.getPhone() );
         }
     }
 

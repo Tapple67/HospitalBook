@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import model.dto.PatDto;
 
-public class PatDao extends BaseDao {
+public class PatDao extends PersonDao {
     private PatDao(){}
     private static final PatDao instance = new PatDao();
     public static PatDao getInstance(){ return instance; }
@@ -16,8 +16,8 @@ public class PatDao extends BaseDao {
         try{             
             String sql = "insert into patient(pname, pphone) values( ? , ? )";
             PreparedStatement ps = conn.prepareStatement( sql ); 
-            ps.setString(1, patDto.getPname() ); 
-            ps.setString(2, patDto.getPphone() ); 
+            ps.setString(1, patDto.getName() ); 
+            ps.setString(2, patDto.getPhone() ); 
             
             int result = ps.executeUpdate(); 
             if( result == 1 ) return true; 
@@ -37,8 +37,8 @@ public class PatDao extends BaseDao {
             while( rs.next() ){ 
                 PatDto patDto = new PatDto(); 
                 patDto.setPno( rs.getInt("pno") ); 
-                patDto.setPname( rs.getString("pname") );
-                patDto.setPphone( rs.getString("pphone") );
+                patDto.setName( rs.getString("pname") );
+                patDto.setPhone( rs.getString("pphone") );
     
                 list.add( patDto );
             }
@@ -51,7 +51,7 @@ public class PatDao extends BaseDao {
     try {String sql = "update patient set pphone = ? where pno = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
 
-        ps.setString(1, patDto.getPphone());
+        ps.setString(1, patDto.getPhone());
         ps.setInt(2, patDto.getPno());
 
         int result = ps.executeUpdate();
@@ -71,5 +71,21 @@ public class PatDao extends BaseDao {
     }catch(SQLException e) {System.out.println(e);}
     return false;
     }
+
+   @Override
+   boolean save(Object Dto) {
+    if(Dto instanceof PatDto) {
+        return save((PatDto) Dto);
+    }
+    return false;
+   }
+
+   @Override
+   boolean update(Object Dto) {
+    if(Dto instanceof PatDto) {
+        return update((PatDto) Dto);
+    }
+    return false;
+   }
 }
     
