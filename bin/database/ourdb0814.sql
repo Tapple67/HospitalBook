@@ -17,13 +17,15 @@ CREATE TABLE doctor(
 );
 
 CREATE TABLE book (
-    bno INT AUTO_INCREMENT,
-    bdate DATE NOT NULL,
-    dno INT,                   
-    pno INT, 
-    
+    bno INT AUTO_INCREMENT,           -- 예약 번호 (자동 증가)
+    bdate DATE NOT NULL,              -- 예약일
+    bname VARCHAR(20) NOT NULL,       -- 환자 이름
+    bpart VARCHAR(20) NOT NULL,       -- 진료과
+    dno INT,                          -- 의사 번호 (외래키용)
+    pno INT,                          -- 환자 번호 (외래키용)
+
     CONSTRAINT PRIMARY KEY(bno),
-        CONSTRAINT FOREIGN KEY(dno) REFERENCES doctor(dno) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT FOREIGN KEY(dno) REFERENCES doctor(dno) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT FOREIGN KEY(pno) REFERENCES patient(pno) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -51,14 +53,14 @@ INSERT INTO doctor(dname, dphone, dpart) VALUES
 ('오세진', '010-7890-1234', '이비인후과'),
 ('임유진', '010-8901-2345', '산부인과');
 
-INSERT INTO book(bdate, dno, pno) VALUES
-('2026-01-14', 1, 1),
-('2025-01-14', 1, 2),
-('2026-08-14', 3, 2),
-('2026-08-15', 2, 3),
-('2026-08-16', 4, 4),
-('2026-08-17', 5, 5),
-('2026-08-18', 6, 6),
-('2026-08-19', 7, 7),
-('2026-08-20', 8, 8),
-('2026-08-21', 10, 9);
+INSERT INTO book(bdate, bname, bpart) VALUES
+('2026-01-14', '유재석', '정형외과'),
+('2025-01-14', '강호동', '내과'),
+('2026-08-14', '신동엽', '외과'),
+('2026-08-15', '고윤정', '피부과'),
+('2026-08-16', '김선호', '치과'),
+('2026-08-17', '김유정', '신경과'),
+('2026-08-18', '송강', '이비인후과'),
+('2026-08-19', '우도환', '내과'),
+('2026-08-20', '서강준', '외과'),
+('2026-08-21', '박보검', '피부과');
