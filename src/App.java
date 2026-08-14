@@ -10,7 +10,7 @@ public class App {
         while(true){
             try{
                 System.out.println("[ 메뉴 선택 ]");
-                System.out.println("1.환자정보 메뉴  2.의사정보 메뉴  3.예약 메뉴  4.처음으로");
+                System.out.println("1.환자정보 메뉴  2.의사정보 메뉴  3.예약 메뉴");
                 System.out.print("번호 선택: ");
                 int ch = scan.nextInt();
                 if(ch==1)
@@ -19,8 +19,6 @@ public class App {
                     DocView.getInstance().run( );
                 else if(ch==3)
                     BookView.getInstance().run( );
-                else if (ch==4)
-                     break;
             }   
             catch(Exception e){
                 System.out.println("잘못된 번호입니다.");
