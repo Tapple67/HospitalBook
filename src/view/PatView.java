@@ -63,7 +63,10 @@ public class PatView {
         System.out.println("[환자정보 수정]");
         System.out.print("환자 번호: "); int pno = scan.nextInt();
         System.out.print("수정할 전화번호: "); String pphone = scan.next();
-        PatDto patDto = new PatDto(pno, pphone, pphone);
+        PatDto patDto = new PatDto();
+
+        patDto.setPno(pno);
+        patDto.setPhone(pphone);
         boolean result = bc.update(patDto);
         if(result) {System.out.println("(안내) 수정완료!");}
         else {System.out.println("(안내) 수정실패!");}
