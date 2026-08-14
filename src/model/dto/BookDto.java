@@ -1,40 +1,62 @@
 package model.dto;
 
 public class BookDto {
-    // 1. 데이터베이스 표에서 (CRUD) 사용할 자료들을 private 멤버변수로 구성
-    private int rpno;
-    private String rname;
-    private String rpart;
-    private String rdate;
-    // 2. 기본생성자, 전체매개변수생성자
-    public BookDto() { }
-    public BookDto(int rpno, String rname, String rpart, String rdate) {
-        this.rpno = rpno;
-        this.rname = rname;
-        this.rpart = rpart;
-        this.rdate = rdate;
+    // 1. private 멤버 변수
+    private int bno;
+    private String bname;
+    private String bpart;
+    private String bdate;
+
+    //기본 생성자
+    public BookDto() {}
+
+    //예약 등록용
+    public BookDto(String bname, String bpart, String bdate) {
+        this.bname = bname;
+        this.bpart = bpart;
+        this.bdate = bdate;
     }
-    // 3. setter and getter , toString
-    public String getRname() {
-        return rname;
+    
+    //예약 삭제 / 수정용 
+    public BookDto(int bno, String bname, String bpart, String bdate) {
+        this.bno = bno;
+        this.bname = bname;
+        this.bpart = bpart;
+        this.bdate = bdate;
     }
-    public void setRname(String rname) {
-        this.rname = rname;
+
+    // 2. Getter / Setter
+    public int getBno() {
+        return bno;
     }
-    public String getRpart() {
-        return rpart;
+    public void setBno(int bno) {
+        this.bno = bno;
     }
-    public void setRpart(String rpart) {
-        this.rpart = rpart;
+
+    public String getBname() {
+        return bname;
     }
-    public String getRdate() {
-        return rdate;
+    public void setBname(String bname) {
+        this.bname = bname;
     }
-    public void setRdate(String rdate) {
-        this.rdate = rdate;
+
+    public String getBpart() {
+        return bpart;
     }
+    public void setBpart(String bpart) {
+        this.bpart = bpart;
+    }
+
+    public String getBdate() {
+        return bdate;
+    }
+    public void setBdate(String bdate) {
+        this.bdate = bdate;
+    }
+
+    // 3. toString()
     @Override
     public String toString() {
-        return "BookDto [rname=" + rname + ", rpart=" + rpart + ", rdate=" + rdate + "]";
+        return "BookDto [bno=" + bno + ", bname=" + bname + ", bpart=" + bpart + ", bdate=" + bdate + "]";
     }
-} // CLASS END 
+}
