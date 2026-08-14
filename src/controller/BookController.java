@@ -1,9 +1,10 @@
-package hospitalbook.src.controller;
+package controller;
 
 import java.util.ArrayList;
-import hospitalbook.src.model.dao.BookDao;
+import model.dao.BookDao;
 
 public class BookController {
+    //싱글톤
     private BookController(){}
     private static final BookController instance = new BookController();
     public static BookController getInstance(){
@@ -11,7 +12,7 @@ public class BookController {
     }
     //[*] MVC패턴 흐름의 dao 싱글톤 호출
     private BookDao bd = BookDao.getInstance();
-}	
+
     // [1] 등록 Controller
     public boolean save( BookDto bookDto ){
         boolean result = bd.booksave( bookDto ); // view에게 전달받은 매개변수을 dao에게전달
