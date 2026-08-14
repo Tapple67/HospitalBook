@@ -9,7 +9,7 @@ public abstract class PersonDao extends BaseDao {
     
     abstract boolean save(Object Dto);
 
-    abstract ArrayList<PatDto> findAll();
+    abstract ArrayList findAll();
 
     abstract boolean update(Object Dto);
 
